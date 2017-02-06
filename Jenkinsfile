@@ -1,9 +1,9 @@
 def pipeline(branch, system) {
   ws("${BRANCH_NAME}_trusty") {
-  docker.image('10.10.2.112:5000/contrail-builder:14.04').inside {
+  docker.image("10.10.2.112:5000/contrail-builder:${system}").inside {
     stage ("checkout contrail-vnc") {
       checkout([$class: 'RepoScm', currentBranch: true,
-        manifestBranch: 'R3.1.1.x', manifestFile: 'default.xml',
+        manifestBranch: "${branch}", manifestFile: 'default.xml',
         manifestRepositoryUrl: 'https://github.com/kklimonda/contrail-vnc',
         quiet: false])
     }
