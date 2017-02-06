@@ -28,7 +28,7 @@ def pipeline(branch, system) {
 
 node {
   parallel (
-    "trusty": pipeline("master", "trusty"),
-    "xenial": pipeline("master", "xenial")
+    "trusty": pipeline("${JOB_BASE_NAME}", "trusty"),
+    "xenial": pipeline("${JOB_BASE_NAME}", "xenial")
   )
 }
